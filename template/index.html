@@ -6,9 +6,9 @@
   <!-- TODO: title + description -->
   <title>LAB TITLE — orgolabs</title>
   <meta name="description" content="TODO one-sentence description." />
-  <link rel="icon" href="brand/orgolabs-icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="https://orgolabs.github.io/shared/brand/orgolabs-icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://orgolabs.github.io/shared/styles.css" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -16,7 +16,7 @@
   <div class="brandbar">
     <div class="wrap">
       <a class="brand" href="https://github.com/orgolabs" target="_blank" rel="noopener">
-        <img src="brand/orgolabs-icon.svg" alt="" width="28" height="28" />
+        <img src="https://orgolabs.github.io/shared/brand/orgolabs-icon.svg" alt="" width="28" height="28" />
         <span class="brand-name"><b>orgo</b>labs</span>
       </a>
       <span class="brand-sep">/</span>
@@ -76,7 +76,14 @@
       <p id="viewer-fallback" class="viewer-fallback" hidden>3Dmol.js could not load from the CDN. Reload with a connection.</p>
     </section>
 
-    <section id="mechanism" class="card"><h2>2 · Mechanism</h2><p class="section-intro">TODO.</p></section>
+    <section id="mechanism" class="card">
+      <h2>2 · Mechanism</h2>
+      <p class="section-intro">TODO.</p>
+      <!-- Reaction pathway: inline SVG using the shared .scheme / .sv-* classes.
+           Copy the pattern from camphor-reduction or aspirin-synthesis and adapt the species/arrows. -->
+      <h3 class="proc-head">Reaction pathway</h3>
+      <div class="scheme"><!-- <svg viewBox="0 0 700 170" ...> boxes + arrows --></div>
+    </section>
     <section id="procedure" class="card">
       <h2>3 · Procedure</h2>
       <a class="dl-btn" href="docs/lab-handout.pdf" target="_blank" rel="noopener">⬇ Download the lab handout (PDF)</a>
@@ -99,11 +106,13 @@
   <script>
     // TODO: one entry per viewer figure above; key must exist in window.STRUCTURES.
     window.VIEWERS = [ { id: "view-example", key: "example" } ];
+    // TODO: verified references, each with a DOI/URL and access: "open" | "paywall".
+    window.REFERENCES = [];
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.5.5/3Dmol-min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="js/structures.js"></script>
-  <script src="js/references.js"></script>
-  <script src="js/viewer.js"></script>
+  <script src="https://orgolabs.github.io/shared/references.js"></script>
+  <script src="https://orgolabs.github.io/shared/viewer.js"></script>
   <script src="js/calculator.js"></script>
 </body>
 </html>

@@ -14,5 +14,8 @@
 - ✅ Private playbook + reusable template (this repo).
 - ✅ Codespaces devcontainers (Node + Claude Code + auto-served preview) in each repo.
 - ✅ Branch protection + issues/discussions on the public labs.
+- ✅ **Shared common place** (`orgolabs/shared`) — one source of truth for CSS, brand, generic viewer + reference
+  renderer, and mechanism-diagram styles. Labs link it by URL instead of copying.
+- ✅ Convention: systematic (IUPAC) names on every compound + a reaction-pathway SVG in each lab.
 - ⬜ Org avatar upload (manual, web-only — pending user).
-- ⬜ Consider: shared CSS as a versioned package instead of copy-per-repo; a tiny test/CI check (HTML/JS lint, link check) via GitHub Actions.
+- ⬜ Consider: a tiny CI check (HTML/JS lint, link check) via GitHub Actions; versioning shared assets.

@@ -16,23 +16,34 @@ Each lab is a single self-contained static site → a public repo under the `org
 
 ---
 
-## Anatomy of a lab
+## Shared vs per-lab (DRY — don't copy shared things)
+
+Common assets live once in **`orgolabs/shared`** (served at `https://orgolabs.github.io/shared/`) and labs link
+them by absolute URL — never copy them into a lab:
+- `shared/styles.css` — the design system (+ `.scheme`/`.sv-*` mechanism-diagram and `.mol-sci` styles)
+- `shared/viewer.js` — the generic 3D viewer (reads `window.VIEWERS = [{id,key}]`)
+- `shared/references.js` — the renderer (reads `window.REFERENCES`)
+- `shared/brand/*` — the logo
+
+## Anatomy of a lab (only lab-specific files live in the lab repo)
 
 ```
 <lab>/
-├── index.html              # content + layout (brandbar, hero, sections, refs)
-├── css/styles.css          # shared orgolabs design system (copy from template/)
+├── index.html              # content + layout; defines window.VIEWERS and window.REFERENCES inline;
+│                           #   links shared styles.css / viewer.js / references.js / brand by URL
 ├── js/
 │   ├── structures.js        # embedded SDF strings (generated — see scripts/)
-│   ├── viewer.js            # 3Dmol.js viewers; reads window.VIEWERS = [{id,key}]
-│   ├── calculator.js        # per-lab stoichiometry + yield
-│   └── references.js        # generic; renders window.REFERENCES into #ref-list
+│   └── calculator.js        # per-lab stoichiometry + yield
 ├── data/*.sdf               # source structures from PubChem (kept as source of truth)
 ├── docs/                    # the lab handout/PDF (downloadable from the page)
-├── brand/                   # orgolabs logo (icon, wordmark, avatar)
 ├── .devcontainer/           # Codespaces: Node + Claude Code + auto-served preview
 ├── .nojekyll · LICENSE · README.md
 ```
+
+Every lab has two scientific-naming + mechanism conventions:
+- Show the **systematic (IUPAC) name** for every compound (a facts-table row + a `.mol-sci` subtitle under each
+  viewer). Common names are secondary — never the only identifier.
+- Include a **reaction pathway** SVG (`.scheme` + `.sv-*` classes) in the mechanism section.
 
 ## Steps
 
