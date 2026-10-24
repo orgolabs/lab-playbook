@@ -1,0 +1,15 @@
+{
+  "name": "orgolabs lab",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": { "label": "Lab preview", "onAutoForward": "openPreview" }
+  },
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code http-server",
+  "postStartCommand": "nohup http-server -p 8000 -c-1 . > /tmp/serve.log 2>&1 &",
+  "customizations": {
+    "vscode": {
+      "extensions": ["anthropic.claude-code"]
+    }
+  }
+}

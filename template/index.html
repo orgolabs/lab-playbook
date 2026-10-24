@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- TODO: title + description -->
+  <title>LAB TITLE — orgolabs</title>
+  <meta name="description" content="TODO one-sentence description." />
+  <link rel="icon" href="brand/orgolabs-icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="brandbar">
+    <div class="wrap">
+      <a class="brand" href="https://github.com/orgolabs" target="_blank" rel="noopener">
+        <img src="brand/orgolabs-icon.svg" alt="" width="28" height="28" />
+        <span class="brand-name"><b>orgo</b>labs</span>
+      </a>
+      <span class="brand-sep">/</span>
+      <span class="brand-lab">LAB NAME</span>
+      <a class="brand-repo" href="https://github.com/orgolabs/LAB-REPO" target="_blank" rel="noopener">View source ↗</a>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Interactive organic chemistry</p>
+      <h1>LAB TITLE</h1>
+      <p class="lede">TODO: one-paragraph hook describing the reaction and what the reader will do.</p>
+      <!-- TODO: optional .reaction-strip summarising the reaction -->
+    </div>
+  </header>
+
+  <nav class="tocbar" aria-label="Section navigation">
+    <div class="wrap">
+      <a href="#about">About</a>
+      <a href="#viewers">3D structures</a>
+      <a href="#mechanism">Mechanism</a>
+      <a href="#procedure">Procedure</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#references">References</a>
+    </div>
+  </nav>
+
+  <main id="main" class="wrap">
+    <section id="about" class="card"><h2>About</h2><p>TODO background.</p></section>
+
+    <section id="viewers" class="card">
+      <h2>1 · The molecules in real 3D</h2>
+      <p class="section-intro">Real geometries from PubChem — drag to rotate, scroll to zoom.</p>
+      <div class="viewer-controls" role="group" aria-label="3D display controls">
+        <div class="ctrl-group">
+          <span class="ctrl-label">Style</span>
+          <button type="button" class="btn" data-style="stick">Stick</button>
+          <button type="button" class="btn is-active" data-style="ballstick">Ball &amp; stick</button>
+          <button type="button" class="btn" data-style="sphere">Space-fill</button>
+        </div>
+        <div class="ctrl-group">
+          <button type="button" class="btn toggle" id="spinBtn" aria-pressed="false">Spin</button>
+          <button type="button" class="btn toggle" id="hBtn" aria-pressed="true">Show H</button>
+          <button type="button" class="btn toggle" id="ohBtn" aria-pressed="false">Highlight O</button>
+        </div>
+      </div>
+      <!-- add grid-4 to .viewer-grid for 4 molecules -->
+      <div class="viewer-grid">
+        <!-- TODO: one figure per molecule; id must match window.VIEWERS below -->
+        <figure class="viewer-card">
+          <figcaption><span class="tag tag-start">Role</span><b>Molecule</b></figcaption>
+          <div class="viewer" id="view-example"></div>
+          <p class="viewer-note">TODO note.</p>
+        </figure>
+      </div>
+      <p id="viewer-fallback" class="viewer-fallback" hidden>3Dmol.js could not load from the CDN. Reload with a connection.</p>
+    </section>
+
+    <section id="mechanism" class="card"><h2>2 · Mechanism</h2><p class="section-intro">TODO.</p></section>
+    <section id="procedure" class="card">
+      <h2>3 · Procedure</h2>
+      <a class="dl-btn" href="docs/lab-handout.pdf" target="_blank" rel="noopener">⬇ Download the lab handout (PDF)</a>
+      <ol class="procedure"><li>TODO step.</li></ol>
+    </section>
+    <section id="calculator" class="card"><h2>4 · Calculator</h2><p class="section-intro">TODO inputs/outputs; wire js/calculator.js.</p></section>
+
+    <section id="references" class="card">
+      <h2>5 · References &amp; sources</h2>
+      <ol class="refs" id="ref-list"></ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>LAB TITLE</strong> — part of <a href="https://github.com/orgolabs">orgolabs</a>. MIT License.</p>
+    </div>
+  </footer>
+
+  <script>
+    // TODO: one entry per viewer figure above; key must exist in window.STRUCTURES.
+    window.VIEWERS = [ { id: "view-example", key: "example" } ];
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.5.5/3Dmol-min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/structures.js"></script>
+  <script src="js/references.js"></script>
+  <script src="js/viewer.js"></script>
+  <script src="js/calculator.js"></script>
+</body>
+</html>
