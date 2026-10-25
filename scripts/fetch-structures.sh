@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Fetch real 3D structures from PubChem and embed them into js/structures.js.
-# Usage (run from a lab's root):  ../orgolabs-lab-playbook/scripts/fetch-structures.sh name1:CID1 name2:CID2 ...
+# Usage (run from a lab's root):  ../lab-playbook/scripts/fetch-structures.sh name1:CID1 name2:CID2 ...
 #   e.g.  fetch-structures.sh cyclopentadiene:7612 maleic_anhydride:7923 endo_adduct:12309
 # Prefer DEFINED-stereochemistry CIDs — undefined-stereo records render the wrong 3D.
 set -euo pipefail
