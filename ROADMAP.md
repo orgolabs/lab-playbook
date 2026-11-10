@@ -2,32 +2,23 @@
 
 ## Shipped
 - ✅ **Reduction of Camphor** — NaBH₄ reduction → isoborneol/borneol (steric approach control). → `orgolabs/camphor-reduction`
-- ✅ **Synthesis of Aspirin** — salicylic acid + acetic anhydride (Olmsted 1998). → `orgolabs/aspirin-synthesis`
+- ✅ **Synthesis of Aspirin** — salicylic acid + acetic anhydride, one-step microscale (Williamson & Masters, 7th ed.). → `orgolabs/aspirin-synthesis`
+- ✅ **Diels–Alder Reaction** — cyclopentadiene + maleic anhydride → endo-norbornene anhydride ([4+2], endo rule). → `orgolabs/diels-alder`
+- ✅ **Guaifenesin (Williamson ether synthesis)** — guaiacol phenoxide + 3-chloro-1,2-propanediol (S_N2). → `orgolabs/guaifenesin-synthesis`
+- ✅ **Trityl Methyl Ether** — triphenylmethanol → trityl methyl ether via the trityl cation (S_N1). → `orgolabs/trityl-methyl-ether`
+- ✅ **Oxidation of Borneol to Camphor** — NaOCl/AcOH oxidation (greener); pairs with camphor-reduction. → `orgolabs/borneol-oxidation`
 
 ## Planned
 
-### ⬜ Diels–Alder reaction (`orgolabs/diels-alder`)
-A concerted [4+2] cycloaddition. Drops onto the existing engine (`content.md` + `window.LAB`). Plan covers **three
-systems** (decided 2026-10-25); procedure will be based on a **user-supplied handout PDF** (like camphor/aspirin).
+### ✅ Diels–Alder reaction — SHIPPED (`orgolabs/diels-alder`)
+Flagship built on **system #1** (cyclopentadiene + maleic anhydride → endo-norbornene anhydride), from the user's
+Williamson & Masters handout (Ch. 48, p. 626). Verified CIDs **7612 / 7923 / 2723766** (endo adduct is defined-stereo);
+the original **Diels & Alder (1928)** citation confirmed via Crossref (DOI 10.1002/jlac.19284600106). Covers the
+concerted [4+2], the FMO picture (HOMO-diene/LUMO-dienophile; EWGs lower the dienophile LUMO), and the **endo rule**.
 
-| | 1. Cyclopentadiene + maleic anhydride | 2. Anthracene + maleic anhydride | 3. Furan + maleic anhydride |
-|---|---|---|---|
-| Teaches | canonical [4+2]; **endo rule** (endo = kinetic major) | DA across an **aromatic** central ring; one product | **reversible** DA (retro-DA); kinetic vs thermodynamic; **exo** isolated |
-| Diene | cyclopentadiene — locked *s-cis*, dimerizes (crack dicyclopentadiene fresh) | anthracene (9,10) | furan (weakly aromatic) |
-| Product | endo-norbornene-2,3-dicarboxylic anhydride, C₉H₈O₃ (164.16) | 9,10-bridged succinic anhydride, C₁₈H₁₂O₃ (~276.3) | *exo*-7-oxanorbornene-dicarboxylic anhydride, C₈H₆O₄ (166.13) |
-| Conditions | room temp, exothermic | reflux (xylene) | mild; watch reversibility/volatility |
-| Pathway | diene + dienophile → **endo (major) + exo (minor)** | anthracene + dienophile → single adduct | furan + dienophile ⇌ **exo (major)** |
-| Calculator | cyclopentadiene by volume (ρ≈0.80, 66.10) + MA 98.06 → 164.16 | anthracene 178.23 + MA 98.06 → 276.3 | furan 68.07 + MA 98.06 → 166.13 |
-
-Common to all: real PubChem 3D + 2D (diene / dienophile / adduct — CIDs **to verify at build**, defined-stereo for
-endo/exo), FMO note (HOMO-diene/LUMO-dienophile; EWGs lower the dienophile LUMO), stereospecific *syn* addition,
-references fact-checked incl. the original **Diels & Alder (1928)**.
-
-**Recommended structure:** one flagship `orgolabs/diels-alder` on the system the handout covers (usually #1) + a
-short "dienes compared" section pulling in #2 and #3 — so the **endo (kinetic) vs exo (thermodynamic, reversible)**
-contrast becomes a teaching highlight in one page. Alternative: three sibling labs sharing the engine.
-
-**Next step:** user supplies handout PDF(s) → confirm flagship-vs-three-labs → verify CIDs → scaffold → build.
+**Possible follow-up:** a "dienes compared" section or sibling labs for #2 (anthracene + maleic anhydride, one adduct)
+and #3 (furan + maleic anhydride, **reversible**/retro-DA, *exo* isolated) — to teach the endo-kinetic vs
+exo-thermodynamic contrast in one place.
 
 ### ⬜ NMR lab
 Interpreting ¹H / ¹³C NMR. Different shape from the synthesis labs: likely an interactive spectrum (peaks ↔
