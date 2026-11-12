@@ -22,14 +22,14 @@ How we build an **orgolabs** lab. Each lab is a thin page that a single shared e
 
 Everything shared lives once in **`orgolabs/shared`** (served at `https://orgolabs.github.io/shared/`); labs link it by URL (same-origin, no CORS):
 
-- **`shared/lab.js`** — *the template*. Reads a lab's `window.LAB` config, fetches its `content.md`, renders Markdown (marked.js) + chemistry (KaTeX + mhchem + auto-render), builds the chrome (brand bar, hero, TOC, footer), and mounts the 3D viewers / pathway / references / calculator. Also loads 3Dmol + `viewer.js` + `nav.js`.
-- `shared/styles.css` (design system), `shared/brand/`, `shared/mol2d/` (PubChem 2D structure PNGs for pathways).
+- **`shared/lab.js`** — *the engine entry*, an **ES module** loaded as `<script type="module">`. Reads a lab's `window.LAB` config, fetches its `content.md`, renders Markdown (marked.js) + chemistry (KaTeX + mhchem + auto-render), builds the chrome (brand bar, hero, TOC, footer), and mounts the 3D viewers / pathway / references / calculator. Also loads 3Dmol + `viewer.js` + `nav.js`. Its logic lives in focused modules it imports from **`shared/engine/`**: `util, chrome, viewers, pathway, references, calculator, sections, chem`.
+- `shared/engine/*.js` (the engine modules `lab.js` imports), `shared/styles.css` (design system), `shared/brand/`, `shared/mol2d/` (PubChem 2D structure PNGs for pathways).
 
 A **lab repo** is just:
 
 ```
 <lab>/
-├── index.html        # thin shell: sets window.LAB (structured data) + loads js/structures.js, shared/lab.js
+├── index.html        # thin shell: sets window.LAB + loads js/structures.js, then shared/lab.js as <script type="module">
 ├── content.md        # ALL prose/tables/procedure in Markdown, chemistry as $\ce{...}$;
 │                     #   interactive blocks are <div data-mount="viewers|pathway|calculator|references">;
 │                     #   styled blocks (.mech-grid/.callout/.safety/.dl-btn) are inline HTML
