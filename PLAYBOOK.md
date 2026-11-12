@@ -14,6 +14,7 @@ How we build an **orgolabs** lab. Each lab is a thin page that a single shared e
 3. **Fact-check before you publish.** Verify molar masses + CIDs via **PubChem PUG-REST**; verify every citation (title / volume / page / DOI) via the **Crossref API**. Prefer open-access links; label each reference *open* vs *subscription*.
 4. **Real data only.** 3D geometries come from PubChem, never invented. Prefer **defined-stereochemistry** CIDs (undefined-stereo records render the wrong 3D — borneol must be CID 6552009, not 64685).
 5. **Chemistry is typeset, never hand-typed.** Write every formula/equation as **`$\ce{...}$`** (mhchem). Don't use Unicode subscripts.
+6. **Validate before you publish.** `scripts/check-lab.sh ../<lab>` must report **0 errors** — it enforces the `window.LAB` + `content.md` contract documented in [`SCHEMA.md`](SCHEMA.md) (catches GFM strikethrough from `~`, Unicode formula subscripts, viewer/structure key mismatches, missing mount divs, malformed references/calculator, missing PDFs).
 
 ---
 
@@ -51,7 +52,8 @@ viewers[], pathway[], pathwayCaption, calculator{inputs,outputs,compute}, refere
 5. **Write `content.md`:** `## ` sections (short headings = TOC chips), prose with `$\ce{}$`, Markdown tables, `<div data-mount="…">` where widgets go.
 6. **Test LOCALLY on a server** (client-side `fetch(content.md)` fails over `file://`):
    `python3 -m http.server 8099` in the lab dir, then open/screenshot `http://localhost:8099/`. (The shell pulls `shared/lab.js` from the live site, so push shared first if you changed the engine.)
-7. **Publish** (below).
+7. **Validate:** `scripts/check-lab.sh ../<lab>` — enforce the `window.LAB` + `content.md` contract ([`SCHEMA.md`](SCHEMA.md)); fix every ERROR before publishing.
+8. **Publish** (below).
 
 ## Publish
 

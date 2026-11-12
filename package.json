@@ -1,0 +1,12 @@
+{
+  "name": "orgolabs-lab-playbook",
+  "version": "1.0.0",
+  "private": true,
+  "description": "orgolabs lab scaffolding, schema, and validator",
+  "scripts": {
+    "check": "node scripts/check-lab.js"
+  },
+  "dependencies": {
+    "marked": "12.0.2"
+  }
+}
