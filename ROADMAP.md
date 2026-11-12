@@ -32,8 +32,10 @@ structure highlighting) rather than a 3D-reaction viewer. Scope TBD.
 - ✅ Codespaces devcontainers (Node + Claude Code + auto-served preview) in each repo.
 - ✅ Branch protection + issues/discussions on the public labs.
 - ✅ **Shared common place** (`orgolabs/shared`) — one source of truth for CSS, brand, viewer, and the lab engine. Labs link it by URL instead of copying.
-- ✅ **Markdown + one shared engine** (`shared/lab.js`): labs are `content.md` + a `window.LAB` config; no build step. Chemistry typeset with **KaTeX + mhchem** (`$\ce{...}$`).
+- ✅ **Markdown + one shared engine** (`shared/lab.js`): labs are `content.md` + a `window.LAB` config; no build step. Chemistry typeset with **KaTeX + mhchem** (`$\ce{...}$`). The engine is modular **ES modules** under `shared/engine/` (`lab.js` = entry, loaded as `type=module`).
 - ✅ Standalone landing site (`orgolabs.github.io`).
 - ✅ Convention: systematic (IUPAC) names on every compound + a real-2D-structure reaction pathway in each lab.
 - ⬜ Org avatar upload (manual, web-only — pending user).
-- ⬜ Consider: a tiny CI check (HTML/JS lint, link check) via GitHub Actions; versioning shared assets.
+- ✅ **Lab validator + `SCHEMA.md`** (`lab-playbook/scripts/check-lab.js`, run via `check-lab.sh`) — enforces the `window.LAB` + `content.md` contract; catches GFM strikethrough, Unicode-formula, viewer/structure key mismatches, broken refs/PDFs.
+- ✅ **CI** (GitHub Actions) — each lab validates its contract on push/PR; `shared` ESM-syntax-checks the engine; `lab-playbook` self-checks the validator.
+- ⬜ Consider: external link-check; versioning shared assets.
